@@ -1,6 +1,7 @@
 import praw
 import pprint
 import json
+import re
 from info import reddit_username, reddit_password
 
 #Set up:
@@ -30,14 +31,64 @@ def get_fresh_music_indieheads(limit, subreddit):
 
 	return only_fresh_headlines
 
-indieheads_songs_dictionary = get_fresh_music_indieheads(10, 'indieheads')
-pp = pprint.PrettyPrinter(indent=2, width='80')
-pp.pprint(indieheads_songs_dictionary)
+#takes in a specific limit (number of posts to search for), and subreddit to generate
+#a dictionary that is needed by everything else.
+def get_songs_dictionary(limit, subreddit):
+	songs_dictionary = get_fresh_music_indieheads(limit, subreddit)
+	return songs_dictionary
 
-raw_entry = json.dumps(indieheads_songs_dictionary[1])
-split_entry = raw_entry.split(']')
-artist_and_tittle_str = split_entry
-print(artist_and_tittle_str)
+#takes in a dictionary that contains information about the song, extract only the artist.
+def get_artist_name():
+	#populate a dictionary with the song information as the value for every key
+	songs_dictionary = get_songs_dictionary(20, 'indieheads')
+
+	#only grab the artist of the song, and populate a list of artist.
+	listOfArtist = []
+	for value in songs_dictionary.values():
+		x = (str(value))
+		listOfArtist.append(re.findall('](.+?)-', x))
+
+
+	return listOfArtist
+
+#get the song name
+def get_song_name():
+	#populate directory with the song information from get_fresh_music_indieheads
+	songs_dictionary = get_songs_dictionary(20, 'indieheads')
+
+	listOfSongNames = []
+	for value in songs_dictionary.values():
+		x = (str(value))
+		print(x)
+		listOfSongNames.append(re.findall('-(.+?)"', x))
+
+	return listOfSongNames
+
+pp = pprint.PrettyPrinter(indent = 6)
+pp.pprint(get_songs_dictionary(20, 'indieheads'))
+print('\n')
+
+pp.pprint(get_song_name())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
