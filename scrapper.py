@@ -1,6 +1,7 @@
 import praw
 import pprint
 import json
+from info import reddit_username, reddit_password
 
 #Set up:
 # -----> get client_id and client_secret from: https://www.reddit.com/prefs/apps
@@ -8,8 +9,8 @@ import json
 # -----> user_agent can be anything.
 reddit = praw.Reddit(client_id = '-764Hb2oqx9bqg',
 					 client_secret = 'EX1afCQfdE2zGobBfP1L7ydFyks',
-					 username = 'thealienmessiah',
-					 password = 'Ironmaiden1828!',
+					 username = reddit_username,
+					 password = reddit_password,
 					 user_agent = 'pythonpraw')
 
 
