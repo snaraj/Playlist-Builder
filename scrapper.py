@@ -58,18 +58,35 @@ def get_song_name():
 
 	listOfSongNames = []
 	for value in songs_dictionary.values():
-		x = (str(value))
-		print(x)
-		listOfSongNames.append(re.findall('-(.+?)"', x))
+		string = (str(value))
+		string_with_symbols = re.findall('-.+?,', string)
+		listOfSongNames.append(string_with_symbols)
 
 	return listOfSongNames
 
-pp = pprint.PrettyPrinter(indent = 6)
-pp.pprint(get_songs_dictionary(20, 'indieheads'))
-print('\n')
+#This function removes everything that isn't a letter or number and also strips
+#the whitespace at both sides of the each entry, in otherwords, this function makes it
+#so it is easily readable.
+def clean_list(list):
+	newList = []
+	for x in range(len(list)):
+		list[x] = str(list[x])
+		newList.append(re.sub('[^a-zA-Z0-9]+', ' ', list[x]).strip())
 
-pp.pprint(get_song_name())
+	return newList
 
+pp = pprint.PrettyPrinter(indent = 1)
+print('LIST OF ARTIST:')
+pp.pprint(clean_list(get_artist_name()))
+print('LIST OF SONGS:')
+pp.pprint(clean_list(get_song_name()))
+
+
+
+# problems ---> I need to figure out how to be able to 'clean up' the output from scraping
+# This means that I have to get rid of all the extra spaces and all of the extra
+# characters that aren't going to be used when searching for a song. Make sure that NO
+# important information is cut out, what if the song has numbers in it? 
 
 
 
