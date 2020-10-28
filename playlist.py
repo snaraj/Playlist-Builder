@@ -21,7 +21,7 @@ class Playlist:
 		request_body = json.dumps({
 				'name' : 'Generated Playlist',
 				'description' : 'This is a automatically generated playlist',
-				'public' : false
+				'public' : True
 		})
 
 		response = requests.post(
@@ -29,7 +29,7 @@ class Playlist:
 				data = request_body,
 				headers = {
 					'Content-Type' : 'application/json',
-					'Authorization' : 'Bearer {}'.format(aouth_token)
+					'Authorization' : 'Bearer {}'.format(self.aouth_token)
 				}
 		)
 
@@ -58,8 +58,6 @@ class Playlist:
 		res_json = response.json()
 		#we only want to take the tracks (name of song)
 		songs = res_json['tracks']['items']
-
-		pp.pprint(songs)
 		
 		#check if the songs exists or not
 		if not songs:
@@ -78,20 +76,31 @@ class Playlist:
 		for x in range(len(get_song_name())):
 			uri.append(self.get_spotify_uri(clean_list(get_song_name())[x], clean_list(get_artist_name())[x]))
 		
-		return uri
+		#gets rid of all the empty entries.
+		uri_clean = [x for x in uri if x]
 
+		return uri_clean
 
 	def add_songs_to_playlist(self):
-		#populate songs into dictionary
-		self.data_to_uri()
-		#collect all of uri
+		uris = self.data_to_uri()
+		
+		playlist_id = self.create_playlist()
 
-		#create a new playlist
+		request_data = json.dumps(uris)
 
-		#add all songs to the playlist
+		query = 'https://api.spotify.com/v1/playlists/{}/tracks'.format(playlist_id)
+		response = requests.post(
+			query,
+			data = request_data,
+			headers = {
+				'Content-Type' : 'application/json',
+				'Authorization' : 'Bearer {}'.format(self.aouth_token)
+			}
+		)
+
 
 p1 = Playlist()
-print(p1.data_to_uri())
+print(p1.add_songs_to_playlist())
 
 
 
