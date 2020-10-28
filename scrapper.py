@@ -75,17 +75,6 @@ def clean_list(list):
 
 	return newList
 
-pp = pprint.PrettyPrinter(indent = 1)
-print('LIST OF ARTIST:')
-pp.pprint(clean_list(get_artist_name()))
-print('LIST OF SONGS:')
-pp.pprint(clean_list(get_song_name()))
-
-
-#TO DO TOMORROW:
-#Figure out how to load this information into playlist.py
-#CREATE THE NEW PLAYLISTTTT !!! WOOOOOOO
-
 
 
 
