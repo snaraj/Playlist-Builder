@@ -1,8 +1,8 @@
+from info import reddit_username, reddit_password
 import praw
 import pprint
 import json
 import re
-from info import reddit_username, reddit_password
 
 #Set up:
 # -----> get client_id and client_secret from: https://www.reddit.com/prefs/apps
@@ -82,11 +82,10 @@ print('LIST OF SONGS:')
 pp.pprint(clean_list(get_song_name()))
 
 
+#TO DO TOMORROW:
+#Figure out how to load this information into playlist.py
+#CREATE THE NEW PLAYLISTTTT !!! WOOOOOOO
 
-# problems ---> I need to figure out how to be able to 'clean up' the output from scraping
-# This means that I have to get rid of all the extra spaces and all of the extra
-# characters that aren't going to be used when searching for a song. Make sure that NO
-# important information is cut out, what if the song has numbers in it? 
 
 
 
