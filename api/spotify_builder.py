@@ -1,12 +1,12 @@
 import requests
 import json
-from scrapper import *
+from .indieheads import indie_heads_playlist
 from info import USER_ID, OAUTH_TOKEN
 
+indie_playlist = indie_heads_playlist()
+print(indie_playlist.songs) 
+
 class Playlist:
-
-	pp = pprint.PrettyPrinter(indent=6)
-
 
 	def __init__(self):
 		self.user_id = USER_ID
@@ -73,8 +73,8 @@ class Playlist:
 		uri = []
 		#parses scrapped information to the get_spotify_uri method and finds all possible
 		#URI's for songs.
-		for x in range(len(get_song_name())):
-			uri.append(self.get_spotify_uri(clean_list(get_song_name())[x], clean_list(get_artist_name())[x]))
+		for x in range(len(indie_playlist.get_song_name())):
+			uri.append(self.get_spotify_uri(indie_playlist.clean_list(indie_playlist.get_song_name())[x], indie_playlist.clean_list(indie_playlist.get_artist_name())[x]))
 		
 		#gets rid of all the empty entries.
 		uri_clean = [x for x in uri if x]
@@ -100,7 +100,9 @@ class Playlist:
 
 
 p1 = Playlist()
-print(p1.add_songs_to_playlist())
+print('Generating playlist.... please wait.')
+p1.add_songs_to_playlist()
+print('\nPlaylist has been generated!')
 
 
 
