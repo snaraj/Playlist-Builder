@@ -1,3 +1,5 @@
+import sys
+sys.path.append('C:/Users/Samuel/Documents/Programming/Python/Playlist_Builder/music_scraper/setup')
 from info import reddit_username, reddit_password
 import praw
 

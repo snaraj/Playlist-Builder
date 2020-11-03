@@ -1,6 +1,8 @@
+import sys
+sys.path.append('C:/Users/Samuel/Documents/Programming/Python/Playlist_Builder/music_scraper/subreddits')
+from indieheads import indie_heads_playlist
 import requests
 import json
-from .indieheads import indie_heads_playlist
 from info import USER_ID, OAUTH_TOKEN
 
 indie_playlist = indie_heads_playlist()

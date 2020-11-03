@@ -1,5 +1,6 @@
-from scrapper import reddit
 import re
+from scrapper import reddit
+
 
 class indie_heads_playlist():
 	

@@ -1,5 +1,6 @@
-reddit_username = ''
-reddit_password = ''
+reddit_username = 'thealienmessiah'
+reddit_password = 'Ironmaiden1828!'
 
-OAUTH_TOKEN = ''
+OAUTH_TOKEN = 'BQD_x1XU6D3d0rnE92JDnHX4ePY1WBp7BtcwyUsZI5e2pyBdR1vva6quSari35wveWYwszrItpapqJy0Y9j43x3IHOXSqgqvSNdTq7kAo1TYOC0LsTLvC4V0MzffK235g0eZ46YE9N5ReqdO4DNjgnmrAxNXOnrZbhi-cl35vgrkthQ4A4TUTItlQ4NE2u3rM69SO3nC1OFWFzUO6zho8kAdV_vKiUIuQ0X9OnCnRvOblYPobjIqoSR0_YIC1eJo5nPvpc-H2y7anFV-Cookh8_2Tn8v4J0spx-oY_0'
 USER_ID = 'dh0htkfq1i3qgws98jyh3rlme'
+
