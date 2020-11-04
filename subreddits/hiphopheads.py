@@ -18,7 +18,7 @@ class hiphopheads():
 		subreddit = reddit.subreddit(SUBREDDIT)
 		
 		#limit defines how many posts are gonna be used
-		hot = subreddit.hot(limit = limit)
+		hot = subreddit.hot(limit = LIMIT)
 		
 		#Different filter criteria than other subreddits
 		#must account for specific things such as fantano reviews
@@ -66,4 +66,3 @@ class hiphopheads():
 			listOfArtist.append(re.findall('(.+?)-', x))
 
 		return self.clean_list(listOfArtist)
-
