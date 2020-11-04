@@ -1,6 +1,6 @@
 from scrapper import reddit
+from utility import populate_playlist
 import re
-import pprint
 
 LIMIT = 50
 SUBREDDIT = 'hiphopheads'
@@ -10,6 +10,8 @@ class hiphopheads():
 	#object is a dictionary of songs.
 	def __init__(self):
 		self.songs = {}
+		self.artist_list = []
+		self.song_list = []
 
 	def get_music_hiphopheads(self, limit):
 		#grabs the subreddit, just put the name
@@ -63,15 +65,9 @@ class hiphopheads():
 			x = (str(value))
 			listOfArtist.append(re.findall('(.+?)-', x))
 
-
 		return self.clean_list(listOfArtist)
 
 
-
-pp = pprint.PrettyPrinter(indent=4)
-hiphopheads = hiphopheads()
-print('song list:')
-pp.pprint(hiphopheads.get_song_list())
-print('artist list:')
-pp.pprint(hiphopheads.get_artist_list())
-
+hiphop = hiphopheads()
+hiphop.populate_playlist(hiphop.get_artist_list(), hiphop.get_song_list())
+print(hiphop.song_list)

@@ -1,23 +1,26 @@
 import re
 from scrapper import reddit
+from utility import populate_playlist
 
+LIMIT = 50
+SUBREDDIT = 'indieheads'
 
 class indie_heads_playlist():
-	
-	subreddit = 'indieheads'
 	
 	#playlist object is a simple dictionary, where the keys are integers,
 	#and the values are the headline of the reddit post being selected.
 	def __init__(self):
 		#Dictionary for all songs.
 		self.songs = {}
+		self.artist_list = []
+		self.song_list = []
 
-	def get_fresh_music_indieheads(self, limit, subreddit):
+	def get_fresh_music_indieheads(self, limit):
 		#grabs the subreddit, just put the name
-		subreddit = reddit.subreddit(self.subreddit)
+		subreddit = reddit.subreddit(SUBREDDIT)
 		
 		#limit defines how many posts are gonna be used
-		hot = subreddit.hot(limit = limit)
+		hot = subreddit.hot(limit = LIMIT)
 		
 		#only grab hot post that contain the substring [FRESH
 		i = 1
@@ -29,9 +32,9 @@ class indie_heads_playlist():
 		return self.songs
 
 	#takes in a dictionary that contains information about the song, extract only the artist.
-	def get_artist_name(self):
+	def get_artist_list(self):
 		#populate a dictionary with the song information as the value for every key
-		songs_dictionary = self.get_fresh_music_indieheads(20, self.subreddit)
+		songs_dictionary = self.get_fresh_music_indieheads(LIMIT)
 
 		#only grab the artist of the song, and populate a list of artist.
 		listOfArtist = []
@@ -43,9 +46,9 @@ class indie_heads_playlist():
 		return self.clean_list(listOfArtist)
 
 	#get the song name
-	def get_song_name(self):
+	def get_song_list(self):
 		#populate directory with the song information from get_fresh_music_indieheads
-		songs_dictionary = self.get_fresh_music_indieheads(20, self.subreddit)
+		songs_dictionary = self.get_fresh_music_indieheads(LIMIT)
 
 		listOfSongNames = []
 		for value in songs_dictionary.values():
@@ -65,3 +68,6 @@ class indie_heads_playlist():
 			newList.append(re.sub('[^a-zA-Z0-9]+', ' ', list[x]).strip())
 
 		return newList
+
+
+
