@@ -1,6 +1,6 @@
-reddit_username = 'thealienmessiah'
-reddit_password = 'Ironmaiden1828!'
+reddit_username = ''
+reddit_password = ''
 
-OAUTH_TOKEN = 'BQD_x1XU6D3d0rnE92JDnHX4ePY1WBp7BtcwyUsZI5e2pyBdR1vva6quSari35wveWYwszrItpapqJy0Y9j43x3IHOXSqgqvSNdTq7kAo1TYOC0LsTLvC4V0MzffK235g0eZ46YE9N5ReqdO4DNjgnmrAxNXOnrZbhi-cl35vgrkthQ4A4TUTItlQ4NE2u3rM69SO3nC1OFWFzUO6zho8kAdV_vKiUIuQ0X9OnCnRvOblYPobjIqoSR0_YIC1eJo5nPvpc-H2y7anFV-Cookh8_2Tn8v4J0spx-oY_0'
-USER_ID = 'dh0htkfq1i3qgws98jyh3rlme'
+OAUTH_TOKEN = 'BQBeeoMKD-T5cM-TVYn7vhM16xR9FN_BadVCXPa-KgSs1IbcArbqptPXcs6CX_45YwAcgEG2TtCS0li3c97VWIwJxc9qc-gw40TtSoz4EfOiPINGOPzKlgn9wbATvIGEWGWg3iKc-YpQWwy5YHrAj451J_yma_aLoNJ4G5M9svck9pvaDkaxiRGxx-Om5Su-Z5alyhkT7TP7-IgoEI7CA70w6FefrX8PPsY9cnGCXZdLXovPFGXkHx0AQ4u5o37cBfKC-HEJqYJ3p0e07weMrpwmO7kwyUmptDW7mW0'
+USER_ID = ''
 
