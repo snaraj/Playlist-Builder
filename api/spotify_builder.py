@@ -2,6 +2,7 @@ import sys
 sys.path.append('C:/Users/Samuel/Documents/Programming/Python/Playlist_Builder/music_scraper/subreddits')
 from indieheads import indie_heads_playlist
 from hiphopheads import hiphopheads
+from listentothis import listentothis
 from info import USER_ID, OAUTH_TOKEN
 from utility import populate_playlist
 import requests
@@ -18,6 +19,10 @@ populate_playlist(indie_playlist, indie_playlist.get_song_list(), indie_playlist
 hiphop_playlist = hiphopheads()
 populate_playlist(hiphop_playlist, hiphop_playlist.get_song_list(), hiphop_playlist.get_artist_list())
 
+#Loading listentothis_playlist object
+listentothis_playlist = listentothis()
+populate_playlist(listentothis_playlist, listentothis_playlist.get_song_list(), listentothis_playlist.get_artist_list())
+
 class Playlist:
 
 	all_songs_list = []
@@ -26,9 +31,12 @@ class Playlist:
 	#adding all of the result to the large list of songs and artist
 	all_songs_list.extend(indie_playlist.song_list)
 	all_songs_list.extend(hiphop_playlist.song_list)
+	all_songs_list.extend(listentothis_playlist.song_list)
 
 	all_artist_list.extend(indie_playlist.artist_list)
 	all_artist_list.extend(hiphop_playlist.artist_list)
+	all_artist_list.extend(listentothis_playlist.artist_list)
+
 
 	def __init__(self):
 		self.user_id = USER_ID
