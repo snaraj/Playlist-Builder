@@ -67,7 +67,3 @@ class hiphopheads():
 
 		return self.clean_list(listOfArtist)
 
-
-hiphop = hiphopheads()
-hiphop.populate_playlist(hiphop.get_artist_list(), hiphop.get_song_list())
-print(hiphop.song_list)
