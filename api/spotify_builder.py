@@ -1,15 +1,34 @@
 import sys
 sys.path.append('C:/Users/Samuel/Documents/Programming/Python/Playlist_Builder/music_scraper/subreddits')
 from indieheads import indie_heads_playlist
+from hiphopheads import hiphopheads
+from info import USER_ID, OAUTH_TOKEN
+from utility import populate_playlist
 import requests
 import json
-from info import USER_ID, OAUTH_TOKEN
+import pprint
 
-#import indieheads playlist object.
+pp = pprint.PrettyPrinter(indent = 4)
+ 
+#Loading indie_playlist object
 indie_playlist = indie_heads_playlist()
-print(indie_playlist.songs) 
+populate_playlist(indie_playlist, indie_playlist.get_song_list(), indie_playlist.get_artist_list())
+
+#Loading hiphop_playlist object
+hiphop_playlist = hiphopheads()
+populate_playlist(hiphop_playlist, hiphop_playlist.get_song_list(), hiphop_playlist.get_artist_list())
 
 class Playlist:
+
+	all_songs_list = []
+	all_artist_list = []
+
+	#adding all of the result to the large list of songs and artist
+	all_songs_list.extend(indie_playlist.song_list)
+	all_songs_list.extend(hiphop_playlist.song_list)
+
+	all_artist_list.extend(indie_playlist.artist_list)
+	all_artist_list.extend(hiphop_playlist.artist_list)
 
 	def __init__(self):
 		self.user_id = USER_ID
@@ -59,6 +78,7 @@ class Playlist:
 
 		#res_json contains the response when looking up the given song and artist
 		res_json = response.json()
+		
 		#we only want to take the tracks (name of song)
 		songs = res_json['tracks']['items']
 		
@@ -76,8 +96,8 @@ class Playlist:
 		uri = []
 		#parses scrapped information to the get_spotify_uri method and finds all possible
 		#URI's for songs.
-		for x in range(len(indie_playlist.get_song_name())):
-			uri.append(self.get_spotify_uri(indie_playlist.clean_list(indie_playlist.get_song_name())[x], indie_playlist.clean_list(indie_playlist.get_artist_name())[x]))
+		for x in range(len(self.all_songs_list)):
+			uri.append(self.get_spotify_uri(self.all_artist_list[x], self.all_songs_list[x]))
 		
 		#gets rid of all the empty entries.
 		uri_clean = [x for x in uri if x]
