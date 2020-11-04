@@ -68,6 +68,3 @@ class indie_heads_playlist():
 			newList.append(re.sub('[^a-zA-Z0-9]+', ' ', list[x]).strip())
 
 		return newList
-
-
-
